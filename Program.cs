@@ -4,7 +4,12 @@
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("***** Welcome to AddressBook Program using Collection *****");
+            Console.WriteLine("Welcome to Address Book Program");
+
+            AddressBook Adr = new AddressBook();
+            Adr.createUser();
+            Adr.printUser();
+
         }
     }
 }
