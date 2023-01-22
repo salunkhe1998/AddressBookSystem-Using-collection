@@ -7,7 +7,7 @@
             Console.WriteLine("Welcome to Address Book Program");
 
             AddressBook Adr = new AddressBook();
-            Adr.createUser();
+            Adr.AddNewContact();
             Adr.printUser();
 
         }
