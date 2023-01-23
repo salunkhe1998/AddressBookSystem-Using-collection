@@ -5,11 +5,9 @@
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Program");
-
             bool choice = true;
-
             AddressBook Adr = new AddressBook();
-            Adr.createUser();
+            details();
 
             static void UserChoice()
             {
@@ -27,7 +25,7 @@
                 switch (Choice)
                 {
                     case 1:
-                        Adr.createUser();
+                        details();
                         Adr.printUser();
                         break;
                     case 2:
@@ -49,6 +47,34 @@
                         break;
 
                 }
+            }
+            static void details()
+            {
+                AddressBook Adr = new AddressBook();
+                Console.WriteLine("Enter FirstName:");
+                string FirstName = Console.ReadLine();
+
+                Console.WriteLine("Enter LastName:");
+                string LastName = Console.ReadLine();
+
+                Console.WriteLine("Enter Address:");
+                string Address = Console.ReadLine();
+
+                Console.WriteLine("Enter City:");
+                string City = Console.ReadLine();
+
+                Console.WriteLine("Enter State:");
+                string State = Console.ReadLine();
+
+                Console.WriteLine("Enter Zip:");
+                string ZipCode = Console.ReadLine();
+
+                Console.WriteLine("Enter PhoneNum:");
+                string PhoneNum = Console.ReadLine();
+
+                Console.WriteLine("Enter Email:");
+                string EmailId = Console.ReadLine();
+                Adr.createUser(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
             }
         }
     }
