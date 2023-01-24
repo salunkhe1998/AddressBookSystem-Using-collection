@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -157,10 +156,13 @@ namespace CollectionAddressBook
                             }
                             else
                             {
-                                Console.WriteLine("match found");
+                                Console.WriteLine("match found\n");
 
-                                // Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName);
-                                Console.WriteLine(i);
+                                Console.WriteLine("Neme of person is {0} {1}.\n", i.FirstName, i.LastName);
+                                Console.WriteLine("Details of person\n");
+                                Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", i.FirstName, i.LastName, i.Address, i.City, i.State, i.ZipCode, i.PhoneNum, i.EmailId);
+                                Console.WriteLine("-----------------------------------------------------------------");
+                                Console.WriteLine();
 
                             }
                         }
@@ -181,9 +183,13 @@ namespace CollectionAddressBook
                             }
                             else
                             {
-                                Console.WriteLine("match found");
+                                Console.WriteLine("match found\n");
 
-                                Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName);
+                                Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName + "\n");
+                                Console.WriteLine("Details of person\n");
+                                Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", i.FirstName, i.LastName, i.Address, i.City, i.State, i.ZipCode, i.PhoneNum, i.EmailId);
+                                Console.WriteLine("-----------------------------------------------------------------");
+                                Console.WriteLine();
                             }
                         }
                         break;
@@ -192,10 +198,10 @@ namespace CollectionAddressBook
                 default:
                     {
                         Console.WriteLine("Enter valid input!");
-
                         break;
                     }
             }
         }
     }
 }
+FooterS
