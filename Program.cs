@@ -1,85 +1,78 @@
 ﻿namespace CollectionAddressBook
 {
-    public class Program
+    class Program
     {
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Program");
-            bool choice = true;
-            AddressBook Adr = new AddressBook();
-            details();
-
-            static void UserChoice()
+            AddressBook Relatives = new AddressBook();
+            AddressBook Work = new AddressBook();
+            int Control;
+            do
             {
-                Console.WriteLine("Choose one of the following options: ");
-                Console.WriteLine("#1 Create new user");
-                Console.WriteLine("#2 Edit user information");
-                Console.WriteLine("#3 Delete existing user");
-                Console.WriteLine("#4 Show all users in adressBook");
-                Console.WriteLine("#5 Search by using city or state");
-                Console.WriteLine("#6 Exit");
-            }
-            while (choice)
-            {
-                UserChoice();
-                int Choice = Convert.ToInt32(Console.ReadLine());
-                switch (Choice)
+                Console.WriteLine("\nChoose an Address Book: ");
+                Console.WriteLine("1 for Relatives Address book");
+                Console.WriteLine("2 for Work Address Book");
+                Console.WriteLine("3 to Search across all Address books");
+                Console.WriteLine("4 to View contacts in a City or State");
+                Console.WriteLine("0 to EXIT");
+                Control = Convert.ToInt32(Console.ReadLine());
+                switch (Control)
                 {
                     case 1:
-                        details();
-                        Adr.printUser();
+                        Relatives.Access_to_Addressbook();
                         break;
                     case 2:
-                        Adr.editContact();
-                        Adr.printUser();
+                        Work.Access_to_Addressbook();
                         break;
                     case 3:
-                        Adr.deleteContact();
-                        Adr.printUser();
+                        Console.Write("Search by (City/State): ");
+                        string cityOrState = Console.ReadLine().ToLower();
+                        string name = "";
+                        int num = 0;
+                        if (cityOrState == "city")
+                        {
+                            Console.Write("Enter the name of the city: ");
+                            name = Console.ReadLine();
+                            num = 1;
+                        }
+                        else if (cityOrState == "state")
+                        {
+                            Console.Write("Enter the name of the state: ");
+                            name = Console.ReadLine();
+                            num = 2;
+                        }
+                        Console.WriteLine("Names of people living in {0} are:\n", name);
+                        int result = Relatives.search(name, num) + Work.search(name, num);
+
+                        Console.WriteLine("Number of people in {0} are {1}", name, num);
                         break;
                     case 4:
-                        Adr.printUser();
+                        Console.WriteLine("\n1 for Relatives");
+                        Console.WriteLine("2 for Work");
+                        Console.WriteLine("0 to Exit");
+                        Console.Write("Pick an address book: ");
+                        int book = Convert.ToInt32(Console.ReadLine());
+                        switch (book)
+                        {
+                            case 1:
+                                Relatives.viewContacts();
+                                break;
+                            case 2:
+                                Work.viewContacts();
+                                break;
+                            default:
+                                break;
+                        }
                         break;
-                    case 5:
-                        Adr.searchperson();
-                        break;
-                    case 6:
-                        choice = false;
+                    case 0:
                         break;
                     default:
-                        Console.WriteLine("Enter a valid option");
+                        Console.WriteLine("Invalid Entry");
                         break;
-
                 }
             }
-            static void details()
-            {
-                AddressBook Adr = new AddressBook();
-                Console.WriteLine("Enter FirstName:");
-                string FirstName = Console.ReadLine();
-
-                Console.WriteLine("Enter LastName:");
-                string LastName = Console.ReadLine();
-
-                Console.WriteLine("Enter Address:");
-                string Address = Console.ReadLine();
-
-                Console.WriteLine("Enter City:");
-                string City = Console.ReadLine();
-
-                Console.WriteLine("Enter State:");
-                string State = Console.ReadLine();
-
-                Console.WriteLine("Enter Zip:");
-                string ZipCode = Console.ReadLine();
-
-                Console.WriteLine("Enter PhoneNum:");
-                string PhoneNum = Console.ReadLine();
-
-                Console.WriteLine("Enter Email:");
-                string EmailId = Console.ReadLine();
-                Adr.createUser(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
-            }
+            while (Control != 0);
         }
     }
 }
